@@ -1,6 +1,10 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
+import os
+from student import Student
+from data_model import Data_Model 
+from face_recognition import Face_Recognition
 
 class Student_Attendance_Management:
     def __init__(self, root):
@@ -48,10 +52,10 @@ class Student_Attendance_Management:
         img4=img4.resize((1530,710),Image.LANCZOS)
         self.photoimg4=ImageTk.PhotoImage(img4)
 
-        b1=Button(bg_img,image=self.photoimg4,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg4,command=self.student_details,cursor="hand2")
         b1.place(x=200,y=100,width=220,height=220)
 
-        b1_1=Button(bg_img,text="Student Details",cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
+        b1_1=Button(bg_img,text="Student Details",command=self.student_details,cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
         b1_1.place(x=200,y=300,width=220,height=40)
 
         #Detect Face button
@@ -59,10 +63,10 @@ class Student_Attendance_Management:
         img5=img5.resize((1530,710),Image.LANCZOS)
         self.photoimg5=ImageTk.PhotoImage(img5)
 
-        b1=Button(bg_img,image=self.photoimg5,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg5,cursor="hand2",command=self.face_data)
         b1.place(x=500,y=100,width=220,height=220)
 
-        b1_1=Button(bg_img,text="Face Detector",cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
+        b1_1=Button(bg_img,text="Face Detector",command=self.face_data,cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
         b1_1.place(x=500,y=300,width=220,height=40)
 
 
@@ -95,10 +99,10 @@ class Student_Attendance_Management:
         img8=img8.resize((1530,710),Image.LANCZOS)
         self.photoimg8=ImageTk.PhotoImage(img8)
 
-        b1=Button(bg_img,image=self.photoimg8,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg8,cursor="hand2",command=self.data_model)
         b1.place(x=200,y=380,width=220,height=220)
 
-        b1_1=Button(bg_img,text="Data Models",cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
+        b1_1=Button(bg_img,text="Data Models",command=self.data_model,cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
         b1_1.place(x=200,y=580,width=220,height=40)
 
 
@@ -107,10 +111,10 @@ class Student_Attendance_Management:
         img9=img9.resize((1530,710),Image.LANCZOS)
         self.photoimg9=ImageTk.PhotoImage(img9)
 
-        b1=Button(bg_img,image=self.photoimg9,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg9,cursor="hand2",command=self.open_img)
         b1.place(x=500,y=380,width=220,height=220)
 
-        b1_1=Button(bg_img,text="Images",cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
+        b1_1=Button(bg_img,text="Images",cursor="hand2",command=self.open_img,font=("times new roman",15,'bold'),bg="darkblue",fg="white")
         b1_1.place(x=500,y=580,width=220,height=40)
 
 
@@ -136,6 +140,23 @@ class Student_Attendance_Management:
 
         b1_1=Button(bg_img,text="Exit",cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
         b1_1.place(x=1100,y=580,width=220,height=40)
+
+    def open_img(self):
+        os.startfile("data")
+
+        #================Functions Buttons===========
+
+    def student_details(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Student(self.new_window)
+
+    def data_model(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Data_Model(self.new_window)
+
+    def face_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Face_Recognition(self.new_window)
 
 if __name__ == "__main__":
     root=Tk()
