@@ -5,6 +5,8 @@ import os
 from student import Student
 from data_model import Data_Model 
 from face_recognition import Face_Recognition
+from Attendance import Attendance
+from developer import Developer
 
 class Student_Attendance_Management:
     def __init__(self, root):
@@ -13,7 +15,7 @@ class Student_Attendance_Management:
         self.root.title("Student Attendance Management System")
 
         #first image
-        img=Image.open(r"D:\Images\ABESIT.jpg")
+        img=Image.open(r"Images\ABESIT.jpg")
         img=img.resize((500,130),Image.LANCZOS)
         self.photoimg=ImageTk.PhotoImage(img)
 
@@ -21,7 +23,7 @@ class Student_Attendance_Management:
         f_lbl.place(x=0,y=0,width=500,height=130)
 
         #second image
-        img1=Image.open(r"D:\Images\face_header_sd.jpg")
+        img1=Image.open(r"Images\face_header_sd.jpg")
         img1=img1.resize((500,130),Image.LANCZOS)
         self.photoimg1=ImageTk.PhotoImage(img1)
 
@@ -29,7 +31,7 @@ class Student_Attendance_Management:
         f_lbl.place(x=500,y=0,width=550,height=130)
 
         #third image
-        img2=Image.open(r"D:\Images\abesit_front.jpg")
+        img2=Image.open(r"Images\abesit_front.jpg")
         img2=img2.resize((500,130),Image.LANCZOS)
         self.photoimg2=ImageTk.PhotoImage(img2)
 
@@ -37,7 +39,7 @@ class Student_Attendance_Management:
         f_lbl.place(x=1000,y=0,width=550,height=130)
 
         #bg image
-        img3=Image.open(r"D:\Images\bg.jpg")
+        img3=Image.open(r"Images\bg.jpg")
         img3=img3.resize((1530,710),Image.LANCZOS)
         self.photoimg3=ImageTk.PhotoImage(img3)
 
@@ -48,7 +50,7 @@ class Student_Attendance_Management:
         title_lbl.place(x=0,y=0,width=1530,height=45)
 
         #student button
-        img4=Image.open(r"D:\Images\student.jpg")
+        img4=Image.open(r"Images\student.jpg")
         img4=img4.resize((1530,710),Image.LANCZOS)
         self.photoimg4=ImageTk.PhotoImage(img4)
 
@@ -59,7 +61,7 @@ class Student_Attendance_Management:
         b1_1.place(x=200,y=300,width=220,height=40)
 
         #Detect Face button
-        img5=Image.open(r"D:\Images\Face_detect5.jpg")
+        img5=Image.open(r"Images\Face_detect5.jpg")
         img5=img5.resize((1530,710),Image.LANCZOS)
         self.photoimg5=ImageTk.PhotoImage(img5)
 
@@ -71,19 +73,19 @@ class Student_Attendance_Management:
 
 
         #Attendance  button
-        img6=Image.open(r"D:\Images\Attendance5.jpg")
+        img6=Image.open(r"Images\Attendance5.jpg")
         img6=img6.resize((1530,710),Image.LANCZOS)
         self.photoimg6=ImageTk.PhotoImage(img6)
 
-        b1=Button(bg_img,image=self.photoimg6,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg6,cursor="hand2",command=self.attendance_data)
         b1.place(x=800,y=100,width=220,height=220)
 
-        b1_1=Button(bg_img,text="Attendance",cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
+        b1_1=Button(bg_img,text="Attendance",cursor="hand2",command=self.attendance_data,font=("times new roman",15,'bold'),bg="darkblue",fg="white")
         b1_1.place(x=800,y=300,width=220,height=40)
 
 
         #Help button
-        img7=Image.open(r"D:\Images\Help2.jpg")
+        img7=Image.open(r"Images\Help2.jpg")
         img7=img7.resize((1530,710),Image.LANCZOS)
         self.photoimg7=ImageTk.PhotoImage(img7)
 
@@ -95,7 +97,7 @@ class Student_Attendance_Management:
 
 
         #Train Model button
-        img8=Image.open(r"D:\Images\Data_Model2.png")
+        img8=Image.open(r"Images\Data_Model2.png")
         img8=img8.resize((1530,710),Image.LANCZOS)
         self.photoimg8=ImageTk.PhotoImage(img8)
 
@@ -107,7 +109,7 @@ class Student_Attendance_Management:
 
 
         #Images button
-        img9=Image.open(r"D:\Images\Images1.jpg")
+        img9=Image.open(r"Images\Images1.jpg")
         img9=img9.resize((1530,710),Image.LANCZOS)
         self.photoimg9=ImageTk.PhotoImage(img9)
 
@@ -119,19 +121,19 @@ class Student_Attendance_Management:
 
 
         #Developer button
-        img10=Image.open(r"D:\Images\developer2.jpg")
+        img10=Image.open(r"Images\developer2.jpg")
         img10=img10.resize((1530,710),Image.LANCZOS)
         self.photoimg10=ImageTk.PhotoImage(img10)
 
-        b1=Button(bg_img,image=self.photoimg10,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg10,cursor="hand2",command=self.developer_info)
         b1.place(x=800,y=380,width=220,height=220)
 
-        b1_1=Button(bg_img,text="Developer",cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
+        b1_1=Button(bg_img,text="Developer",cursor="hand2",command=self.developer_info,font=("times new roman",15,'bold'),bg="darkblue",fg="white")
         b1_1.place(x=800,y=580,width=220,height=40)
 
 
         #Exit button
-        img11=Image.open(r"D:\Images\exit1.png")
+        img11=Image.open(r"Images\exit1.png")
         img11=img11.resize((1530,710),Image.LANCZOS)
         self.photoimg11=ImageTk.PhotoImage(img11)
 
@@ -157,6 +159,14 @@ class Student_Attendance_Management:
     def face_data(self):
         self.new_window=Toplevel(self.root)
         self.app=Face_Recognition(self.new_window)
+
+    def attendance_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Attendance(self.new_window)
+
+    def developer_info(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Developer(self.new_window)
 
 if __name__ == "__main__":
     root=Tk()
