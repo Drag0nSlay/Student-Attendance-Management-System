@@ -29,7 +29,7 @@ class Student:
 
 
         #first image
-        img=Image.open(r"D:\Images\student1.jpg")
+        img=Image.open(r"Images\student1.jpg")
         img=img.resize((500,130),Image.LANCZOS)
         self.photoimg=ImageTk.PhotoImage(img)
 
@@ -37,7 +37,7 @@ class Student:
         f_lbl.place(x=0,y=0,width=500,height=130)
 
         #second image
-        img1=Image.open(r"D:\Images\student2.jpg")
+        img1=Image.open(r"Images\student2.jpg")
         img1=img1.resize((500,130),Image.LANCZOS)
         self.photoimg1=ImageTk.PhotoImage(img1)
 
@@ -45,7 +45,7 @@ class Student:
         f_lbl.place(x=500,y=0,width=550,height=130)
 
         #third image
-        img2=Image.open(r"D:\Images\student3.jpg")
+        img2=Image.open(r"Images\student3.jpg")
         img2=img2.resize((500,130),Image.LANCZOS)
         self.photoimg2=ImageTk.PhotoImage(img2)
 
@@ -54,7 +54,7 @@ class Student:
 
 
         #bg image
-        img3=Image.open(r"D:\Images\bg.jpg")
+        img3=Image.open(r"Images\bg.jpg")
         img3=img3.resize((1530,710),Image.LANCZOS)
         self.photoimg3=ImageTk.PhotoImage(img3)
 
@@ -71,7 +71,7 @@ class Student:
         Left_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student Details",font=("times new roman",12,"bold"))
         Left_frame.place(x=10,y=10,width=730,height=580)
 
-        img_left=Image.open(r"D:\Images\student4.jpg")
+        img_left=Image.open(r"Images\student4.jpg")
         img_left=img_left.resize((720,130),Image.LANCZOS)
         self.photoimg_left=ImageTk.PhotoImage(img_left)
 
@@ -158,7 +158,7 @@ class Student:
         gender_label.grid(row=2,column=0,padx=10,pady=5,sticky=W)
 
         gender_combo=ttk.Combobox(class_Student_frame,textvariable=self.var_gender,font=("times new roman",13,"bold"),state="read only",width=18)
-        gender_combo["values"]=("Male","Female","Monika Chauhan")
+        gender_combo["values"]=("Male","Female","Other")
         gender_combo.current(0)
         gender_combo.grid(row=2,column=1,padx=10,pady=5,sticky=W)
 
@@ -234,7 +234,7 @@ class Student:
         Right_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student Details",font=("times new roman",12,"bold"))
         Right_frame.place(x=750,y=10,width=720,height=580)
 
-        img_right=Image.open(r"D:\Images\student5.jpg")
+        img_right=Image.open(r"Images\student5.jpg")
         img_right=img_right.resize((720,130),Image.LANCZOS)
         self.photoimg_right=ImageTk.PhotoImage(img_right)
 
