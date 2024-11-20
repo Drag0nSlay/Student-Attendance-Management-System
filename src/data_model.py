@@ -18,7 +18,7 @@ class Data_Model:
         title_lbl=Label(self.root,text="TRAIN DATA MODEL SETS",font=("times new roman",35,'bold'),bg="purple",fg="white")
         title_lbl.place(x=0,y=0,width=1530,height=45)
 
-        img_top=Image.open(r"D:\Images\DATA1.jpg")
+        img_top=Image.open(r"Images\DATA1.jpg")
         img_top=img_top.resize((1530,325),Image.LANCZOS)
         self.photoimg_top=ImageTk.PhotoImage(img_top)
 
@@ -29,7 +29,7 @@ class Data_Model:
         b1_1=Button(self.root,text="TRAIN DATA MODEL",command=self.train_classifier,cursor="hand2",font=("times new roman",30,'bold'),bg="blue",fg="white")
         b1_1.place(x=0,y=380,width=1530,height=60)
 
-        img_bottom=Image.open(r"D:\Images\DATA2.jpg")
+        img_bottom=Image.open(r"Images\DATA2.jpg")
         img_bottom=img_bottom.resize((1530,325),Image.LANCZOS)
         self.photoimg_bottom=ImageTk.PhotoImage(img_bottom)
 
@@ -57,7 +57,7 @@ class Data_Model:
         #======================= Train the classifier And save==================
         clf=cv2.face.LBPHFaceRecognizer_create()
         clf.train(faces,ids)
-        clf.write("classifier.xml")
+        clf.write(f"src/classifier.xml")
         cv2.destroyAllWindows()
         messagebox.showinfo("Result","Training data models sets completed!!!")
 
