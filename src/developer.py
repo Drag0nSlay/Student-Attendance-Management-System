@@ -32,8 +32,16 @@ class Developer:
         f_lbl=Label(main_frame,image=self.photoimg_top1)
         f_lbl.place(x=300,y=0,width=200,height=200)
 
+        #Developer info
         dev_label=Label(main_frame,text="Hello, I'm Aman Kothari\nand I'm Passionate about\ncybersecurity.",font=("times new roman",20,"bold"))
         dev_label.place(x=0,y=5)
+
+        img2=Image.open(r"Images\Portfolio.png")
+        img2=img2.resize((500,390),Image.LANCZOS)
+        self.photoimg2=ImageTk.PhotoImage(img2)
+
+        f_lbl=Label(main_frame,image=self.photoimg2)
+        f_lbl.place(x=0,y=210,width=500,height=390)
 
 if __name__ == "__main__":
     root=Tk()
