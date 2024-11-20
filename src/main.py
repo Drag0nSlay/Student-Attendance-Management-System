@@ -1,12 +1,17 @@
 from tkinter import *
 from tkinter import ttk
+import tkinter.messagebox
 from PIL import Image, ImageTk
+import tkinter
+from datetime import datetime
+from time import strftime
 import os
 from student import Student
 from data_model import Data_Model 
 from face_recognition import Face_Recognition
 from Attendance import Attendance
 from developer import Developer
+from chatbot1 import ChatBot
 
 class Student_Attendance_Management:
     def __init__(self, root):
@@ -49,6 +54,16 @@ class Student_Attendance_Management:
         title_lbl=Label(bg_img,text="STUDENT ATTENDANCE MANAGEMENT SYSTEM ",font=("times new roman",35,'bold'),bg="orange",fg="white")
         title_lbl.place(x=0,y=0,width=1530,height=45)
 
+        #=========time================
+        def time():
+            string=strftime('%H:%M:%S %p')
+            lbl.config(text=string)
+            lbl.after(1000, time)
+
+        lbl = Label(title_lbl, font=("times new roman",14,"bold"),background='orange',foreground='white')
+        lbl.place(x=0, y=0, width=110, height=50)
+        time()
+
         #student button
         img4=Image.open(r"Images\student.jpg")
         img4=img4.resize((1530,710),Image.LANCZOS)
@@ -82,19 +97,6 @@ class Student_Attendance_Management:
 
         b1_1=Button(bg_img,text="Attendance",cursor="hand2",command=self.attendance_data,font=("times new roman",15,'bold'),bg="darkblue",fg="white")
         b1_1.place(x=800,y=300,width=220,height=40)
-
-
-        #Help button
-        img7=Image.open(r"Images\Help2.jpg")
-        img7=img7.resize((1530,710),Image.LANCZOS)
-        self.photoimg7=ImageTk.PhotoImage(img7)
-
-        b1=Button(bg_img,image=self.photoimg7,cursor="hand2")
-        b1.place(x=1100,y=100,width=220,height=220)
-
-        b1_1=Button(bg_img,text="Help",cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
-        b1_1.place(x=1100,y=300,width=220,height=40)
-
 
         #Train Model button
         img8=Image.open(r"Images\Data_Model2.png")
@@ -137,14 +139,34 @@ class Student_Attendance_Management:
         img11=img11.resize((1530,710),Image.LANCZOS)
         self.photoimg11=ImageTk.PhotoImage(img11)
 
-        b1=Button(bg_img,image=self.photoimg11,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg11,cursor="hand2",command=self.exit)
         b1.place(x=1100,y=380,width=220,height=220)
 
-        b1_1=Button(bg_img,text="Exit",cursor="hand2",font=("times new roman",15,'bold'),bg="darkblue",fg="white")
+        b1_1=Button(bg_img,text="Exit",cursor="hand2",command=self.exit,font=("times new roman",15,'bold'),bg="darkblue",fg="white")
         b1_1.place(x=1100,y=580,width=220,height=40)
 
+        #ChatBot Button
+        img_chat=Image.open(r"Images\Chatbot1.jpg")
+        img_chat=img_chat.resize((220,220),Image.LANCZOS)
+        self.photoimg_chat=ImageTk.PhotoImage(img_chat)
+
+        bChat=Button(bg_img,image=self.photoimg_chat,cursor="hand2",command=self.chatbot)
+        bChat.place(x=1100,y=100,width=220,height=220)
+
+        b1_Chat=Button(bg_img,text="ChatBot",cursor="hand2",command=self.chatbot,font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b1_Chat.place(x=1100,y=300,width=220,height=40)
+
+#======= Photo Sample Function================
     def open_img(self):
         os.startfile("data")
+
+    def exit(self):
+        self.exit=tkinter.messagebox.askyesno("Student Attendance Management System","Are you sure want to leave this application?",parent=self.root)
+        if self.exit>0:
+            self.root.destroy()
+
+        else:
+            return
 
         #================Functions Buttons===========
 
@@ -167,6 +189,10 @@ class Student_Attendance_Management:
     def developer_info(self):
         self.new_window=Toplevel(self.root)
         self.app=Developer(self.new_window)
+
+    def chatbot(self):
+        self.new_window=Toplevel(self.root)
+        self.app=ChatBot(self.new_window)
 
 if __name__ == "__main__":
     root=Tk()
