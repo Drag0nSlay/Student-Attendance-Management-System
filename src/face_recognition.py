@@ -8,6 +8,7 @@ from datetime import datetime
 import cv2
 import os
 import numpy as np
+import time
 
 class Face_Recognition:
     def __init__(self, root):
