@@ -111,5 +111,5 @@ You can view the full license text in the [LICENSE](LICENSE) file in this reposi
 Feel free to contribute to this project by raising issues or submitting pull requests. Together, we can make it even better! 😊
 
 ## Author
-Drag0nSlay(Aman Kothari)
+Drag0nSlay(Aman Kothari)<br>
 Developer and creator of this project.
