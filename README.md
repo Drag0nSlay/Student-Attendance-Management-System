@@ -63,8 +63,8 @@ This system eliminates manual errors, reduces time consumption, and prevents pro
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/student-attendance-system.git
-   cd student-attendance-system
+   git clone https://github.com/Drag0nSlay/Student-Attendance-Management-System.git
+   cd Student-Attendance-Management-System
 2. Install required dependencies:
    ```bash
    pip install opencv-python mysql-connector-python pillow
